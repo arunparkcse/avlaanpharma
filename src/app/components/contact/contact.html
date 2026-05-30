@@ -1,0 +1,155 @@
+<div class="contact-page-wrapper">
+  <!-- Title Header -->
+  <section class="contact-hero reveal">
+    <div class="container">
+      <span class="product-badge text-gradient-accent">B2B COLLABORATION</span>
+      <h1 class="contact-title">Talk to us</h1>
+      <p class="contact-subtext">Connect with our Chennai-based nutraceutical specialists to request active ingredient samples, stability data sheets, or commercial contract rates.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form Grid -->
+  <section class="contact-grid-section container reveal">
+    <div class="contact-grid">
+      <!-- Contact Details Sidebar -->
+      <div class="contact-info-panel">
+        <div class="info-block">
+          <h4 class="info-title">Corporate Head Office</h4>
+          <p class="info-text">
+            Avlaan Pharmaceutical Pvt. Ltd.<br>
+            Sree Krishna Leela, Unit 3, 1st Floor,<br>
+            New No. 34, 2nd Main Road,<br>
+            R. A. Puram, Chennai – 600028,<br>
+            Tamil Nadu, India.
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h4 class="info-title">Direct Contacts</h4>
+          <p class="info-text">
+            <strong>General Email:</strong> <a href="mailto:info@avlaanpharma.com">info@avlaanpharma.com</a>
+          </p>
+          <p class="info-text">
+            <strong>B2B Inquiry Line:</strong> <a href="tel:+919677239111">+91 96772 39111</a>
+          </p>
+          <p class="info-text">
+            <strong>Administrative Line:</strong> <a href="tel:+917358551962">+91 73585 51962</a>
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h4 class="info-title">Working Hours</h4>
+          <p class="info-text">Monday to Saturday: 9:30 AM – 6:30 PM (IST)</p>
+        </div>
+      </div>
+
+      <!-- Contact Form Panel -->
+      <div class="contact-form-panel">
+        <form *ngIf="!isSubmitted(); else successCard" (submit)="onSubmit($event)" class="b2b-form">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name *</label>
+              <input 
+                type="text" 
+                id="name" 
+                required 
+                placeholder="Enter your name" 
+                class="form-input" 
+                [value]="name()"
+                (input)="onInput('name', $event)"
+              />
+            </div>
+            <div class="form-group">
+              <label for="company" class="form-label">Company Name</label>
+              <input 
+                type="text" 
+                id="company" 
+                placeholder="Enter company name" 
+                class="form-input"
+                [value]="company()" 
+                (input)="onInput('company', $event)"
+              />
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="email" class="form-label">Business Email *</label>
+              <input 
+                type="email" 
+                id="email" 
+                required 
+                placeholder="email@company.com" 
+                class="form-input"
+                [value]="email()" 
+                (input)="onInput('email', $event)"
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone" class="form-label">Contact Phone</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                placeholder="+91 XXXXX XXXXX" 
+                class="form-input"
+                [value]="phone()" 
+                (input)="onInput('phone', $event)"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Inquiry Details *</label>
+            <textarea 
+              id="message" 
+              required 
+              rows="5" 
+              placeholder="Tell us about your formulation requirements..." 
+              class="form-textarea"
+              [value]="message()" 
+              (input)="onInput('message', $event)"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit">Submit Inquiry</button>
+        </form>
+
+        <ng-template #successCard>
+          <div class="success-card">
+            <div class="success-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <h3 class="success-title">Inquiry Submitted</h3>
+            <p class="success-desc">
+              Thank you for contacting Avlaan Pharma. A B2B formulation specialist will review your request and reach out to you within one business day.
+            </p>
+            <button class="btn btn-outline-dark" (click)="isSubmitted.set(false)">Send another message</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Location Section -->
+  <section class="contact-map-section container reveal" style="margin-top: 80px;">
+    <div style="margin-bottom: 25px;">
+      <span style="text-transform: uppercase; font-size: 14px; font-weight: 600; color: var(--color-blue-main);">[02] FIND OUR OFFICE</span>
+      <h2 style="font-size: 32px; font-weight: 300; color: var(--color-blue-dark); margin-top: 5px;">Find Us in Chennai</h2>
+    </div>
+    <div class="map-container">
+      <iframe 
+        src="https://maps.google.com/maps?q=Sree%20Krishna%20Leela,%20New%20No.%2034,%202nd%20Main%20Road,%20R.%20A.%20Puram,%20Chennai%20600028&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Avlaan Pharma Corporate Office Location">
+      </iframe>
+    </div>
+  </section>
+</div>

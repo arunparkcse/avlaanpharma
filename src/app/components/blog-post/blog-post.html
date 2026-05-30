@@ -1,0 +1,69 @@
+<div class="post-page-wrapper">
+  <div class="container back-link-wrap">
+    <a routerLink="/insights" class="back-link">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Insights
+    </a>
+  </div>
+
+  <div class="container" *ngIf="activePost(); else notFound">
+    <article class="blog-article-content">
+      <!-- Header -->
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="article-category text-gradient-accent">{{ activePost()?.category }}</span>
+          <span class="meta-separator">•</span>
+          <span class="article-date">{{ activePost()?.date }}</span>
+          <span class="meta-separator">•</span>
+          <span class="article-read-time">{{ activePost()?.readTime }}</span>
+        </div>
+        <h1 class="article-title">{{ activePost()?.title }}</h1>
+      </header>
+
+      <!-- Post Banner -->
+      <div class="article-banner-wrapper" *ngIf="activePost()?.image">
+        <img [src]="activePost()?.image" [alt]="activePost()?.title" class="article-banner-img" />
+      </div>
+
+      <!-- Intro -->
+      <section class="article-intro">
+        <p>{{ activePost()?.intro }}</p>
+      </section>
+
+      <!-- Dynamic Sections -->
+      <section class="article-body">
+        <div class="article-section" *ngFor="let sec of activePost()?.sections">
+          <h2 class="section-heading-blog">{{ sec.heading }}</h2>
+          <p *ngFor="let para of sec.paragraphs">{{ para }}</p>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="article-conclusion">
+        <h2 class="section-heading-blog">Concluding Thoughts</h2>
+        <p>{{ activePost()?.conclusion }}</p>
+      </section>
+    </article>
+
+    <!-- Inner Article CTA -->
+    <div class="article-cta-box text-center">
+      <h3>Differentiate Your Formulations</h3>
+      <p>Consult our raw material sourcing experts for stability dossiers, potency certificates, and bulk pricing.</p>
+      <a routerLink="/contact" class="btn btn-primary">Connect with Avlaan</a>
+    </div>
+  </div>
+
+  <ng-template #notFound>
+    <div class="container text-center not-found-wrapper">
+      <svg class="error-icon" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 8v4M12 16h.01"/>
+      </svg>
+      <h2>Article Not Found</h2>
+      <p>The requested insights page could not be located on the server.</p>
+      <a routerLink="/insights" class="btn btn-primary">Return to Insights</a>
+    </div>
+  </ng-template>
+</div>

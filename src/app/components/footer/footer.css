@@ -1,0 +1,184 @@
+.footer-wrapper {
+  background: var(--color-dark-grad);
+  color: var(--color-white);
+  padding-top: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Footer Marquee Banner (Palladio Group Inspired) */
+.footer-marquee {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 22px 0;
+  background: rgba(12, 153, 214, 0.04);
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  animation: marquee-slide 30s linear infinite;
+}
+
+.marquee-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+}
+
+.marquee-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-green-accent);
+  margin: 0 45px;
+  box-shadow: 0 0 10px var(--color-green-accent);
+}
+
+@keyframes marquee-slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Main Content Grid */
+.footer-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 50px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .footer-content-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+  }
+}
+
+/* Info Column */
+.footer-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.logo-img-footer {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+.company-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #abb8c3;
+  max-width: 460px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.contact-item {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #abb8c3;
+}
+
+.contact-item strong {
+  color: var(--color-white);
+}
+
+.contact-item a {
+  color: var(--color-cyan-glow);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.contact-item a:hover {
+  color: var(--color-green-accent);
+}
+
+/* Links Columns */
+.footer-links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.footer-col-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-links-list a {
+  font-size: 14px;
+  color: #abb8c3;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  line-height: 1.4;
+  display: inline-block;
+}
+
+.footer-links-list a:hover {
+  color: var(--color-cyan-glow);
+  transform: translateX(4px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.footer-bottom-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom-container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.copy-text,
+.design-credit {
+  font-size: 12.5px;
+  color: #7b8e9b;
+}
+
+.design-credit {
+  color: rgba(255, 255, 255, 0.15);
+}

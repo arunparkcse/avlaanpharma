@@ -1,0 +1,220 @@
+<!-- Hero Banner Section -->
+<section class="hero-section">
+  <!-- Horizontal Slides Container -->
+  <div class="hero-slides-container" [style.--active-hero-index]="activeHeroSlideIndex()">
+    <div class="hero-slide" *ngFor="let slide of heroSlides; let i = index">
+      <!-- Background image or video -->
+      <img *ngIf="slide.bgType === 'image'" [src]="slide.bgUrl" [alt]="slide.headline" class="hero-slide-bg" />
+      
+      <!-- Video slide with autoplay, loop, muted, playsinline -->
+      <video *ngIf="slide.bgType === 'video'" class="hero-slide-bg" autoplay loop muted playsinline>
+        <source [src]="slide.bgUrl" type="video/mp4" />
+      </video>
+      
+      <div class="hero-slide-overlay"></div>
+      
+      <div class="container hero-container">
+        <div class="hero-content reveal">
+          <div class="hero-tag-badge">{{ slide.tagline }}</div>
+          <h1 class="hero-headline">{{ slide.headline }}</h1>
+          
+          <!-- Cycling Mottos (only show on first slide to maintain feature consistency) -->
+          <div class="motto-carousel" *ngIf="i === 0">
+            <span class="motto-text">{{ mottos[activeMottoIndex()] }}</span>
+          </div>
+          
+          <p class="hero-subtext">{{ slide.subtext }}</p>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary" (click)="scrollToTargetAdjusted('products-section')">Explore Ingredients</button>
+            <a routerLink="/contact" class="btn btn-outline-white">Inquire B2B</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Controls (Chevrons) -->
+  <button class="hero-nav-btn hero-prev-btn" (click)="prevHeroSlide()" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+  <button class="hero-nav-btn hero-next-btn" (click)="nextHeroSlide()" aria-label="Next slide">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+
+  <!-- Hero Dot Indicators -->
+  <div class="hero-dots-container">
+    <button *ngFor="let slide of heroSlides; let idx = index" 
+            class="hero-dot" 
+            [class.active]="idx === activeHeroSlideIndex()" 
+            (click)="setHeroSlide(idx)"
+            [aria-label]="'Go to slide ' + (idx + 1)">
+    </button>
+  </div>
+  
+  <!-- Scroll Down Prompt (Fixed on top of all slides) -->
+  <div class="scroll-prompt" (click)="scrollToTargetAdjusted('about-us')">
+    <span class="scroll-prompt-text">Discover Avlaan</span>
+    <div class="scroll-arrow">
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about-us" class="about-section reveal">
+  <div class="container grid-2">
+    <div class="section-side-title">
+      <span class="label-number">[01]</span>
+      <span class="label-text">WHO WE ARE</span>
+    </div>
+    <div class="about-body">
+      <h2 class="section-heading">Science-backed nutrition for a cleaner lifestyle.</h2>
+      <p class="about-p">
+        Incorporated in 2014, Avlaan Pharmaceutical Pvt. Ltd. has emerged as Chennai's premier developer and supplier of high-quality active ingredients. We bridge the gap between global clinical research and local supplement manufacturing.
+      </p>
+      <p class="about-p text-muted">
+        We specialize in 100% plant-origin, clean-label alternatives to conventional ingredients, catering to the growing vegetarian, vegan, and sustainability-conscious markets in India and abroad.
+      </p>
+      <div class="about-stats-grid">
+        <div class="stat-card">
+          <span class="stat-num">2014</span>
+          <span class="stat-desc">Established in Chennai</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">100%</span>
+          <span class="stat-desc">Vegan Product Line</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">FSSAI</span>
+          <span class="stat-desc">Approved & Compliant</span>
+        </div>
+      </div>
+      <div style="margin-top: 30px;">
+        <a routerLink="/about-us" class="btn btn-outline-dark">Read Our Full Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Grid Section -->
+<section id="products-section" class="products-section">
+  <div class="container">
+    <div class="ancor-row reveal">
+      <span class="uppercase size-14 color-blue-main">[02] SPECIALTY INGREDIENTS</span>
+      <h2 class="section-title-large">Clinically Studied Actives</h2>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card reveal" *ngFor="let prod of products">
+        <div class="product-img-wrapper">
+          <img [src]="prod.image" [alt]="prod.name" class="product-card-img" />
+          <span class="source-tag">{{ prod.source }}</span>
+        </div>
+        <div class="product-card-body">
+          <h3 class="product-card-title">{{ prod.name }}</h3>
+          <p class="product-card-desc">{{ prod.summary }}</p>
+          <a [routerLink]="prod.route" class="btn btn-outline-dark btn-card">View Specification</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B2B Services Horizontal Section -->
+<section id="services-section" class="services-section">
+  <div class="container">
+    <div class="ancor-row reveal services-header-row">
+      <div>
+        <span class="uppercase size-14 color-white">[03] SERVICES & CAPABILITIES</span>
+        <h2 class="section-title-large color-white">The Value of Partnership</h2>
+      </div>
+      <!-- Slider Controls -->
+      <div class="slider-controls">
+        <button class="control-btn" (click)="prevService()" aria-label="Previous service">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        <button class="control-btn" (click)="nextService()" aria-label="Next service">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Services Slider Viewport -->
+    <div class="services-slider-viewport reveal">
+      <div class="services-grid" [style.--active-index]="activeServiceIndex()">
+        <div class="service-card" *ngFor="let ser of services">
+          <div class="service-top">
+            <span class="service-num">{{ ser.num }}</span>
+            <div class="service-icon-bg">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v8M8 12h8" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="service-title">{{ ser.title }}</h3>
+          <p class="service-desc">{{ ser.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Innovation Hub Section -->
+<section id="innovation-hub" class="innovation-section reveal">
+  <div class="container grid-2">
+    <div class="section-side-title">
+      <span class="label-number">[04]</span>
+      <span class="label-text">INNOVATION HUB</span>
+    </div>
+    <div class="innovation-body">
+      <h2 class="section-heading text-gradient">The relationships that shape nutrition.</h2>
+      <p class="about-p">
+        We do not just supply ingredients; we innovate alongside you. Through close collaboration with universities, clinical researchers, and our UK partner ProTec Nutra Ltd, we bring the latest active breakthroughs to the Indian market.
+      </p>
+      <p class="about-p text-muted">
+        Our submission of Vollagen® won **Runner-Up at Vitafoods India 2026 Innovation Zone Awards**, cementing our status as a trusted, pioneering partner for B2B brands.
+      </p>
+      
+      <!-- List details -->
+      <div class="innovation-points">
+        <div class="point-item">
+          <span class="point-bullet"></span>
+          <span class="point-text"><strong>Rapid Prototyping:</strong> We help test formulation stability and organoleptic properties.</span>
+        </div>
+        <div class="point-item">
+          <span class="point-bullet"></span>
+          <span class="point-text"><strong>Science-Backed:</strong> Access to clinical study reports and GRAS/FSSAI dossiers.</span>
+        </div>
+        <div class="point-item">
+          <span class="point-bullet"></span>
+          <span class="point-text"><strong>Regulatory Defensibility:</strong> Trademark protection for your labels.</span>
+        </div>
+      </div>
+
+      <div class="action-wrap">
+        <a routerLink="/insights" class="btn btn-primary">Read Clinical Insights</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call To Action Section (Palladio Style) -->
+<section class="cta-section" style="background-image: linear-gradient(rgba(1, 36, 49, 0.8), rgba(1, 36, 49, 0.95)), url('images/hero_mesh.png');">
+  <div class="container cta-container reveal">
+    <h2 class="cta-heading">The next scenario?<br>Let's build it together.</h2>
+    <p class="cta-subtext">Contact our Chennai-based formulation specialists to request product samples, stability dossiers, or pricing sheets.</p>
+    <a routerLink="/contact" class="btn btn-outline-white btn-lg">Inquire B2B Sourcing</a>
+  </div>
+</section>

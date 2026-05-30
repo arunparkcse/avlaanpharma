@@ -1,0 +1,106 @@
+<header class="navbar-wrapper" (click)="closeProductsDropdown()">
+  <div class="container navbar-container">
+    <!-- Brand Logo -->
+    <a routerLink="/" class="logo-link" (click)="closeMobileMenu()">
+      <img src="images/logo.png" alt="Avlaan Pharma Logo" class="logo-img" />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav">
+      <ul class="nav-links">
+        <li>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        </li>
+        <li>
+          <a routerLink="/about-us" routerLinkActive="active">About Us</a>
+        </li>
+        <li class="dropdown-item" (click)="$event.stopPropagation()">
+          <button class="dropdown-btn" [class.open]="isProductsDropdownOpen()" (click)="toggleProductsDropdown($event)">
+            Products
+            <svg class="arrow-icon" viewBox="0 0 24 24" width="16" height="16">
+              <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </button>
+          
+          <!-- Dropdown List -->
+          <ul class="dropdown-menu" [class.show]="isProductsDropdownOpen()">
+            <li>
+              <a routerLink="/vegan-vitamin-d3-supplier-india" (click)="closeProductsDropdown()" routerLinkActive="active">
+                <span class="product-title">Vitashine™ D3</span>
+                <span class="product-desc">Vegan Lichen-Derived Vitamin D3</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/phytodroitin" (click)="closeProductsDropdown()" routerLinkActive="active">
+                <span class="product-title">Phytodroitin™</span>
+                <span class="product-desc">Plant Chondroitin Alternative</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/vegan-collagen-ingredient-supplier-india" (click)="closeProductsDropdown()" routerLinkActive="active">
+                <span class="product-title">Vollagen®</span>
+                <span class="product-desc">Fermentation Collagen Alternative</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/magtein-supplier-india" (click)="closeProductsDropdown()" routerLinkActive="active">
+                <span class="product-title">Magtein®</span>
+                <span class="product-desc">Cognitive Magnesium L-Threonate</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a routerLink="/insights" routerLinkActive="active">Insights</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header Action Button (Desktop Only) -->
+    <div class="nav-actions">
+      <a routerLink="/contact" class="btn btn-primary btn-nav">Contact Us</a>
+    </div>
+
+    <!-- Burger Menu Button (Mobile) -->
+    <button class="burger-btn" [class.open]="isMobileMenuOpen()" (click)="toggleMobileMenu(); $event.stopPropagation()">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Overlay Navigation -->
+  <div class="mobile-nav-tray" [class.open]="isMobileMenuOpen()">
+    <ul class="mobile-nav-links">
+      <li>
+        <a routerLink="/" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      </li>
+      <li>
+        <a routerLink="/about-us" (click)="closeMobileMenu()" routerLinkActive="active">About Us</a>
+      </li>
+      <li class="mobile-dropdown">
+        <span class="mobile-dropdown-title">Products</span>
+        <ul class="mobile-submenu">
+          <li>
+            <a routerLink="/vegan-vitamin-d3-supplier-india" (click)="closeMobileMenu()" routerLinkActive="active">Vitashine™ D3</a>
+          </li>
+          <li>
+            <a routerLink="/phytodroitin" (click)="closeMobileMenu()" routerLinkActive="active">Phytodroitin™</a>
+          </li>
+          <li>
+            <a routerLink="/vegan-collagen-ingredient-supplier-india" (click)="closeMobileMenu()" routerLinkActive="active">Vollagen®</a>
+          </li>
+          <li>
+            <a routerLink="/magtein-supplier-india" (click)="closeMobileMenu()" routerLinkActive="active">Magtein®</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a routerLink="/insights" (click)="closeMobileMenu()" routerLinkActive="active">Insights</a>
+      </li>
+      <li class="mobile-cta-li">
+        <a routerLink="/contact" (click)="closeMobileMenu()" class="btn btn-primary w-full">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+</header>

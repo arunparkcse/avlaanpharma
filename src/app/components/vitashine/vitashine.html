@@ -1,0 +1,114 @@
+<div class="product-page-wrapper">
+  <!-- Back Link Banner -->
+  <div class="container back-link-wrap">
+    <a routerLink="/" class="back-link">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Ingredients
+    </a>
+  </div>
+
+  <!-- Hero Details Grid -->
+  <section class="product-hero-section reveal">
+    <div class="container grid-2-product">
+      <div class="product-hero-info">
+        <span class="product-badge text-gradient-accent">VEGAN VITAMIN D3 ACTIVE</span>
+        <h1 class="product-title-large">Vitashine™ D3</h1>
+        <p class="product-tagline">The world's first FSSAI-approved, 100% lichen-derived Cholecalciferol (D3).</p>
+        <p class="product-long-desc">
+          Conventional Vitamin D3 is derived from lanolin (extracted from sheep's wool). Vitashine™ D3 is a clean, sustainable, and 100% plant-origin alternative derived from wild-harvested Lichen. Highly stable and bioidentical to human D3, it provides the perfect clean-label solution for premium supplements.
+        </p>
+
+        <!-- Certifications List -->
+        <div class="certifications-checklist">
+          <div class="cert-item"><span class="check-icon">✓</span> FSSAI Approved with Green Dot</div>
+          <div class="cert-item"><span class="check-icon">✓</span> Non-GMO & Allergen-Free</div>
+          <div class="cert-item"><span class="check-icon">✓</span> Registered with the Vegan Society</div>
+          <div class="cert-item"><span class="check-icon">✓</span> Kosher & Halal Certified</div>
+        </div>
+      </div>
+      
+      <!-- Product Graphic -->
+      <div class="product-hero-graphic">
+        <div class="graphic-bg" style="background-image: url('images/vitashine.png');"></div>
+        <div class="glow-accent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Spec & Formats Section -->
+  <section class="specs-section reveal">
+    <div class="container">
+      <h2 class="section-title-large text-center">Specifications & Formats</h2>
+      <p class="section-subtext-center">Avlaan supplies Vitashine™ in two tailored formats for B2B manufacturers.</p>
+
+      <!-- Formats Selector Tabs -->
+      <div class="formats-tabs-wrapper">
+        <button class="tab-btn" [class.active]="selectedFormat() === 'oil'" (click)="setFormat('oil')">
+          Oil Format (1M IU/g)
+        </button>
+        <button class="tab-btn" [class.active]="selectedFormat() === 'powder'" (click)="setFormat('powder')">
+          Powder Format (100k IU/g)
+        </button>
+      </div>
+
+      <!-- Format Detail Cards -->
+      <div class="format-card-content">
+        <div class="format-detail-grid" *ngIf="selectedFormat() === 'oil'">
+          <div class="format-text-col">
+            <h3 class="format-title">Vitashine™ D3 Oil</h3>
+            <p class="format-desc">
+              Oily liquid format, perfect for softgels, liquid drops, spray supplements, and food fortification. Highly stable in oil bases.
+            </p>
+            <div class="spec-table">
+              <div class="spec-row"><span class="spec-label">Potency:</span> <span class="spec-val">1,000,000 IU/g (Cholecalciferol)</span></div>
+              <div class="spec-row"><span class="spec-label">Standard Pack Sizes:</span> <span class="spec-val">200g & 1kg aluminium containers</span></div>
+              <div class="spec-row"><span class="spec-label">Carrier:</span> <span class="spec-val">Medium Chain Triglycerides (MCT) Oil</span></div>
+              <div class="spec-row"><span class="spec-label">Shelf Life:</span> <span class="spec-val">24 months from manufacture</span></div>
+            </div>
+          </div>
+          <div class="format-badge-col">
+            <div class="format-highlight-badge">
+              <span class="highlight-num">1M</span>
+              <span class="highlight-text">IU/g Concentration</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="format-detail-grid" *ngIf="selectedFormat() === 'powder'">
+          <div class="format-text-col">
+            <h3 class="format-title">Vitashine™ D3 Powder</h3>
+            <p class="format-desc">
+              Cold water dispersible (CWD) free-flowing powder, ideal for tablets, hard capsules, powdered drink mixes, and premixes.
+            </p>
+            <div class="spec-table">
+              <div class="spec-row"><span class="spec-label">Potency:</span> <span class="spec-val">100,000 IU/g (Cholecalciferol)</span></div>
+              <div class="spec-row"><span class="spec-label">Standard Pack Sizes:</span> <span class="spec-val">1kg & 5kg aluminium bags</span></div>
+              <div class="spec-row"><span class="spec-label">Solubility:</span> <span class="spec-val">Cold-water dispersible powder</span></div>
+              <div class="spec-row"><span class="spec-label">Carrier:</span> <span class="spec-val">Gum Arabic, Corn Syrup, Silicon Dioxide</span></div>
+            </div>
+          </div>
+          <div class="format-badge-col">
+            <div class="format-highlight-badge">
+              <span class="highlight-num">100K</span>
+              <span class="highlight-text">IU/g Concentration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="product-cta-section reveal">
+    <div class="container text-center">
+      <h2 class="cta-heading-product">Differentiate Your Product Line</h2>
+      <p class="cta-subtext-product">Request samples of Vitashine™ D3 for pilot batches or contact our sales team for documentation sheets.</p>
+      <div class="cta-buttons-product">
+        <a routerLink="/contact" class="btn btn-primary">Request Samples</a>
+        <a routerLink="/contact" class="btn btn-outline-dark">Talk to a specialist</a>
+      </div>
+    </div>
+  </section>
+</div>

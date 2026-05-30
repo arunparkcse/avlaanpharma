@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Color Palette - Premium Brand Aligned Gradients */
+  --color-primary-grad: linear-gradient(135deg, #00587a 0%, #01374a 50%, #012431 100%);
+  --color-accent-grad: linear-gradient(135deg, #a92418 0%, #e56020 50%, #feb71b 100%);
+  --color-dark-grad: linear-gradient(135deg, #012431 0%, #00121a 100%);
+  --color-bg-light: #f7fafc;
+  --color-blue-main: #00587a;
+  --color-blue-dark: #012431;
+  --color-blue-light: #df9d18;
+  --color-cyan-glow: #feb71b;
+  --color-green-accent: #e56020;
+  --color-white: #ffffff;
+  --color-text-dark: #1c2b33;
+  --color-text-muted: #576d7b;
+  --color-glass-bg: rgba(255, 255, 255, 0.75);
+  --color-glass-border: rgba(229, 96, 32, 0.12);
+  
+  --border-radius-premium: 16px;
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --box-shadow-premium: 0 10px 30px -10px rgba(0, 88, 122, 0.08);
+  --box-shadow-hover: 0 20px 40px -15px rgba(0, 88, 122, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  background-color: var(--color-white);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-blue-dark);
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-blue-light);
+  border: 2px solid var(--color-bg-light);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue-main);
+}
+
+/* Typography Helpers */
+.text-gradient {
+  background: var(--color-primary-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--color-accent-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Buttons (Palladio Group Inspired) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--color-blue-main);
+  color: var(--color-white);
+}
+.btn-primary:hover {
+  background: #004561;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -8px rgba(0, 88, 122, 0.4);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--color-blue-main);
+  border-color: var(--color-blue-main);
+}
+.btn-outline-dark:hover {
+  background: var(--color-blue-main);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.btn-outline-white:hover {
+  background: var(--color-white);
+  color: var(--color-blue-main);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -8px rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Grid & Layout System */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 80px;
+  }
+}

@@ -1,0 +1,83 @@
+<div class="insights-page-wrapper">
+  <!-- Header Title -->
+  <section class="insights-hero reveal">
+    <div class="container text-center">
+      <span class="product-badge text-gradient-accent">KNOWLEDGE & COMPLIANCE</span>
+      <h1 class="insights-title">Insights & Market Trends</h1>
+      <p class="insights-subtext">Stay updated with scientific clinical reviews, FSSAI regulatory compliance guidance, and active ingredients innovation.</p>
+    </div>
+  </section>
+
+  <!-- Filter & Search Section -->
+  <section class="filters-section reveal">
+    <div class="container filter-container">
+      <!-- Search Box -->
+      <div class="search-box-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <path d="M21 21l-4.3-4.3" />
+        </svg>
+        <input 
+          type="text" 
+          placeholder="Search articles by keywords..." 
+          class="search-input" 
+          (input)="onSearchChange($event)"
+          [value]="searchQuery()"
+        />
+      </div>
+
+      <!-- Categories Navigation -->
+      <div class="categories-list">
+        <button 
+          *ngFor="let cat of categories" 
+          class="cat-btn" 
+          [class.active]="selectedCategory() === cat"
+          (click)="setCategory(cat)"
+        >
+          {{ cat }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Grid -->
+  <section class="articles-section container">
+    <div class="articles-grid" *ngIf="filteredPosts().length > 0; else noPosts">
+      <div class="article-card" *ngFor="let post of filteredPosts()">
+        <div class="card-img-wrapper" *ngIf="post.image">
+          <img [src]="post.image" [alt]="post.title" class="card-img" />
+        </div>
+        <div class="card-meta">
+          <span class="card-date">{{ post.date }}</span>
+          <span class="card-category">{{ post.category }}</span>
+        </div>
+        <h3 class="card-title">
+          <a [routerLink]="['/uncategorized', post.slug]">{{ post.title }}</a>
+        </h3>
+        <p class="card-desc">{{ post.summary }}</p>
+        <div class="card-footer">
+          <span class="card-read-time">{{ post.readTime }}</span>
+          <a [routerLink]="['/uncategorized', post.slug]" class="read-more-link">
+            Read Article
+            <svg class="arrow-right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State Template -->
+    <ng-template #noPosts>
+      <div class="empty-state text-center">
+        <svg class="empty-icon" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 8v4M12 16h.01"/>
+        </svg>
+        <h3>No articles found</h3>
+        <p>Try refining your search keyword or selecting a different category filter.</p>
+        <button class="btn btn-outline-dark" (click)="setCategory('All'); searchQuery.set('')">Reset Filters</button>
+      </div>
+    </ng-template>
+  </section>
+</div>

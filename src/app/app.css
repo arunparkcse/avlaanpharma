@@ -1,0 +1,5 @@
+.main-content {
+  min-height: calc(100vh - 80px); /* header height is 80px */
+  display: flex;
+  flex-direction: column;
+}
