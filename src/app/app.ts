@@ -17,7 +17,11 @@ export class App implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        window.scrollTo({ top: 0, behavior: 'auto' });
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }, 20);
       }
     });
   }
