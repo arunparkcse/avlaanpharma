@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { RouterOutlet, Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
 
@@ -12,16 +12,23 @@ import { Footer } from './components/footer/footer';
 export class App implements OnInit {
   protected readonly title = signal('avlaanpharma-web');
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }
 
   ngOnInit() {
     this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
       if (event instanceof NavigationEnd) {
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'auto' });
-          document.documentElement.scrollTop = 0;
-          document.body.scrollTop = 0;
-        }, 20);
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
       }
     });
   }
