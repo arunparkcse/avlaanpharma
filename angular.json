@@ -20,6 +20,9 @@
               "base": "docs",
               "browser": ""
             },
+            "baseHref": "./",
+            "prerender": false,
+            "ssr": false,
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
